@@ -133,7 +133,7 @@ class Cep2Controller:
     def SendEvent(self, event) -> None:
             print("Event("+event+") was sent to the database.")
             
-            conn = http.client.HTTPConnection('192.168.60.134')
+            conn = http.client.HTTPConnection('85.27.189.208')
             event_kitchen_occupancy = heucod.HeucodEvent()
             event_kitchen_occupancy.Timestamp = time.time()+7200
             event_kitchen_occupancy.Event = event
