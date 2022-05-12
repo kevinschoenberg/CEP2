@@ -1,0 +1,50 @@
+info  2022-05-11 15:05:43: Logging to console and directory: '/opt/zigbee2mqtt/data/log/2022-05-11.15-05-39' filename: log.txt
+info  2022-05-11 15:05:43: Starting Zigbee2MQTT version 1.23.0 (commit #6ea61bae)
+info  2022-05-11 15:05:43: Starting zigbee-herdsman (0.14.10)
+info  2022-05-11 15:05:45: zigbee-herdsman started (resumed)
+info  2022-05-11 15:05:45: Coordinator firmware version: '{"meta":{"maintrel":3,"majorrel":2,"minorrel":6,"product":0,"revision":20190608,"transportrev":2},"type":"zStack12"}'
+info  2022-05-11 15:05:45: Currently 4 devices are joined:
+info  2022-05-11 15:05:45: Kitchen_Sensor (0x00158d00057b287c): RTCGQ11LM - Xiaomi Aqara human body movement and illuminance sensor (EndDevice)
+info  2022-05-11 15:05:45: Extra_Plug (0x680ae2fffe723dd6): SP 220 - Innr Smart plug (Router)
+info  2022-05-11 15:05:45: Kitchen_Plug (0xccccccfffeeab163): 07048L - Immax NEO SMART plug (Router)
+info  2022-05-11 15:05:45: Kitchen_Light (0x60a423fffe0233bc): GL-MC-001P - Gledopto Zigbee USB Mini LED Controller RGB+CCT (pro) (Router)
+info  2022-05-11 15:05:45: Zigbee: disabling joining new devices.
+info  2022-05-11 15:05:45: Connecting to MQTT server at mqtt://localhost
+info  2022-05-11 15:05:45: Connected to MQTT server
+info  2022-05-11 15:05:45: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload 'online'
+info  2022-05-11 15:05:46: Started frontend on port 0.0.0.0:8080
+info  2022-05-11 15:05:46: MQTT publish: topic 'zigbee2mqtt/bridge/config', payload '{"commit":"6ea61bae","coordinator":{"meta":{"maintrel":3,"majorrel":2,"minorrel":6,"product":0,"revision":20190608,"transportrev":2},"type":"zStack12"},"log_level":"info","network":{"channel":11,"extendedPanID":"0x00124b0014d9d10b","panID":6754},"permit_join":false,"version":"1.23.0"}'
+info  2022-05-11 15:05:46: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":211,"illuminance_lux":211,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:46: MQTT publish: topic 'zigbee2mqtt/Extra_Plug', payload '{"state":"ON"}'
+info  2022-05-11 15:05:46: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"power":7,"state":"ON"}'
+info  2022-05-11 15:05:46: MQTT publish: topic 'zigbee2mqtt/Kitchen_Light', payload '{"color_mode":"xy","linkquality":39}'
+info  2022-05-11 15:05:49: MQTT publish: topic 'zigbee2mqtt/Kitchen_Light', payload '{"color_mode":"xy","linkquality":70,"update":{"state":"idle"},"update_available":false}'
+info  2022-05-11 15:05:50: MQTT publish: topic 'zigbee2mqtt/bridge/response/health_check', payload '{"data":{"healthy":true},"status":"ok"}'
+info  2022-05-11 15:05:52: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":213,"illuminance_lux":213,"linkquality":42,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:52: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":213,"illuminance_lux":213,"linkquality":42,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:59: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":60,"power":7,"state":"OFF"}'
+info  2022-05-11 15:06:00: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":60,"power":0,"state":"OFF"}'
+info  2022-05-11 15:06:00: MQTT publish: topic 'zigbee2mqtt/Kitchen_Light', payload '{"color_mode":"xy","linkquality":68,"state":"OFF","update":{"state":"idle"},"update_available":false}'
+info  2022-05-11 15:06:01: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":57,"power":0,"state":"ON"}'
+info  2022-05-11 15:06:01: MQTT publish: topic 'zigbee2mqtt/Kitchen_Light', payload '{"color_mode":"xy","linkquality":68,"state":"OFF","update":{"state":"idle"},"update_available":false}'
+info  2022-05-11 15:06:02: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":218,"illuminance_lux":218,"linkquality":36,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:02: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":218,"illuminance_lux":218,"linkquality":36,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:05: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":15,"power":7,"state":"ON"}'
+info  2022-05-11 15:06:08: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":214,"illuminance_lux":214,"linkquality":39,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:09: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":214,"illuminance_lux":214,"linkquality":39,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:18: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":224,"illuminance_lux":224,"linkquality":31,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:18: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":224,"illuminance_lux":224,"linkquality":28,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:24: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":224,"illuminance_lux":224,"linkquality":42,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:24: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":224,"illuminance_lux":224,"linkquality":42,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:32: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":233,"illuminance_lux":233,"linkquality":44,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:32: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":233,"illuminance_lux":233,"linkquality":44,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:37: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":227,"illuminance_lux":227,"linkquality":7,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:37: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":227,"illuminance_lux":227,"linkquality":18,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:06:39: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":65,"power":19,"state":"ON"}'
+info  2022-05-11 15:06:45: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":52,"power":11,"state":"ON"}'
+info  2022-05-11 15:06:50: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":36,"power":7,"state":"ON"}'
+info  2022-05-11 15:07:11: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload 'offline'
+info  2022-05-11 15:07:11: Disconnecting from MQTT server
+info  2022-05-11 15:07:11: Stopping zigbee-herdsman...
+info  2022-05-11 15:07:12: Stopped zigbee-herdsman
+info  2022-05-11 15:07:12: Stopped Zigbee2MQTT

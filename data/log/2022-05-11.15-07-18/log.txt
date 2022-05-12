@@ -1,0 +1,59 @@
+info  2022-05-11 15:07:22: Logging to console and directory: '/opt/zigbee2mqtt/data/log/2022-05-11.15-07-18' filename: log.txt
+info  2022-05-11 15:07:22: Starting Zigbee2MQTT version 1.23.0 (commit #6ea61bae)
+info  2022-05-11 15:07:22: Starting zigbee-herdsman (0.14.10)
+info  2022-05-11 15:07:24: zigbee-herdsman started (resumed)
+info  2022-05-11 15:07:24: Coordinator firmware version: '{"meta":{"maintrel":3,"majorrel":2,"minorrel":6,"product":0,"revision":20190608,"transportrev":2},"type":"zStack12"}'
+info  2022-05-11 15:07:24: Currently 4 devices are joined:
+info  2022-05-11 15:07:24: Kitchen_Sensor (0x00158d00057b287c): RTCGQ11LM - Xiaomi Aqara human body movement and illuminance sensor (EndDevice)
+info  2022-05-11 15:07:24: Extra_Plug (0x680ae2fffe723dd6): SP 220 - Innr Smart plug (Router)
+info  2022-05-11 15:07:24: Kitchen_Plug (0xccccccfffeeab163): 07048L - Immax NEO SMART plug (Router)
+info  2022-05-11 15:07:24: Kitchen_Light (0x60a423fffe0233bc): GL-MC-001P - Gledopto Zigbee USB Mini LED Controller RGB+CCT (pro) (Router)
+warn  2022-05-11 15:07:24: `permit_join` set to  `true` in configuration.yaml.
+warn  2022-05-11 15:07:24: Allowing new devices to join.
+warn  2022-05-11 15:07:24: Set `permit_join` to `false` once you joined all devices.
+info  2022-05-11 15:07:24: Zigbee: allowing new devices to join.
+info  2022-05-11 15:07:24: Connecting to MQTT server at mqtt://localhost
+info  2022-05-11 15:07:25: Connected to MQTT server
+info  2022-05-11 15:07:25: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload 'online'
+info  2022-05-11 15:07:25: Started frontend on port 0.0.0.0:8080
+info  2022-05-11 15:07:25: MQTT publish: topic 'zigbee2mqtt/bridge/config', payload '{"commit":"6ea61bae","coordinator":{"meta":{"maintrel":3,"majorrel":2,"minorrel":6,"product":0,"revision":20190608,"transportrev":2},"type":"zStack12"},"log_level":"info","network":{"channel":11,"extendedPanID":"0x00124b0014d9d10b","panID":6754},"permit_join":true,"version":"1.23.0"}'
+info  2022-05-11 15:07:25: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":227,"illuminance_lux":227,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:07:25: MQTT publish: topic 'zigbee2mqtt/Extra_Plug', payload '{"state":"ON"}'
+info  2022-05-11 15:07:25: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"power":7,"state":"ON"}'
+info  2022-05-11 15:07:25: MQTT publish: topic 'zigbee2mqtt/Kitchen_Light', payload '{"color_mode":"xy","state":"OFF","update":{"state":"idle"},"update_available":false}'
+info  2022-05-11 15:07:41: Device '0x588e81fffe5093f9' joined
+info  2022-05-11 15:07:41: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"friendly_name":"0x588e81fffe5093f9","ieee_address":"0x588e81fffe5093f9"},"type":"device_joined"}'
+info  2022-05-11 15:07:41: MQTT publish: topic 'zigbee2mqtt/bridge/log', payload '{"message":{"friendly_name":"0x588e81fffe5093f9"},"type":"device_connected"}'
+info  2022-05-11 15:07:41: Starting interview of '0x588e81fffe5093f9'
+info  2022-05-11 15:07:41: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"friendly_name":"0x588e81fffe5093f9","ieee_address":"0x588e81fffe5093f9","status":"started"},"type":"device_interview"}'
+info  2022-05-11 15:07:41: MQTT publish: topic 'zigbee2mqtt/bridge/log', payload '{"message":"interview_started","meta":{"friendly_name":"0x588e81fffe5093f9"},"type":"pairing"}'
+info  2022-05-11 15:08:37: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":42,"power":15,"state":"ON"}'
+info  2022-05-11 15:08:42: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":28,"power":11,"state":"ON"}'
+info  2022-05-11 15:08:47: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":47,"power":7,"state":"ON"}'
+info  2022-05-11 15:08:52: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":44,"power":15,"state":"ON"}'
+info  2022-05-11 15:08:57: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":39,"power":7,"state":"ON"}'
+info  2022-05-11 15:09:02: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":39,"power":11,"state":"ON"}'
+info  2022-05-11 15:09:23: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":60,"power":7,"state":"ON"}'
+info  2022-05-11 15:09:29: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":23,"power":11,"state":"ON"}'
+info  2022-05-11 15:09:36: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":34,"power":7,"state":"ON"}'
+info  2022-05-11 15:09:44: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":28,"power":11,"state":"ON"}'
+info  2022-05-11 15:09:49: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":36,"power":7,"state":"ON"}'
+info  2022-05-11 15:09:55: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":18,"power":11,"state":"ON"}'
+error 2022-05-11 15:10:00: Failed to interview '0x588e81fffe5093f9', device has not successfully been paired
+info  2022-05-11 15:10:00: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"friendly_name":"0x588e81fffe5093f9","ieee_address":"0x588e81fffe5093f9","status":"failed"},"type":"device_interview"}'
+info  2022-05-11 15:10:00: MQTT publish: topic 'zigbee2mqtt/bridge/log', payload '{"message":"interview_failed","meta":{"friendly_name":"0x588e81fffe5093f9"},"type":"pairing"}'
+info  2022-05-11 15:10:31: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":31,"power":7,"state":"ON"}'
+info  2022-05-11 15:10:36: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":23,"power":11,"state":"ON"}'
+info  2022-05-11 15:10:46: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":47,"power":15,"state":"ON"}'
+info  2022-05-11 15:10:48: MQTT publish: topic 'zigbee2mqtt/Kitchen_Light', payload '{"color_mode":"xy","linkquality":92,"state":"OFF","update":{"state":"idle"},"update_available":false}'
+info  2022-05-11 15:10:53: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":47,"power":19,"state":"ON"}'
+info  2022-05-11 15:10:58: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":34,"power":15,"state":"ON"}'
+info  2022-05-11 15:11:05: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":47,"power":11,"state":"ON"}'
+info  2022-05-11 15:11:10: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":36,"power":7,"state":"ON"}'
+info  2022-05-11 15:11:46: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":34,"power":11,"state":"ON"}'
+info  2022-05-11 15:11:51: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"linkquality":31,"power":7,"state":"ON"}'
+info  2022-05-11 15:12:01: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload 'offline'
+info  2022-05-11 15:12:01: Disconnecting from MQTT server
+info  2022-05-11 15:12:01: Stopping zigbee-herdsman...
+info  2022-05-11 15:12:01: Stopped zigbee-herdsman
+info  2022-05-11 15:12:01: Stopped Zigbee2MQTT

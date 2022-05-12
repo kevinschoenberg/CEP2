@@ -1,0 +1,42 @@
+{
+    "0xccccccfffeeab163": {
+        "state": "ON",
+        "power": 23
+    },
+    "0x680ae2fffe723dd6": {
+        "state": "ON"
+    },
+    "0x00158d00057b4d2a": {
+        "occupancy": false
+    },
+    "0x00158d00057b287c": {
+        "occupancy": false,
+        "illuminance": 77,
+        "illuminance_lux": 77,
+        "voltage": 3205,
+        "battery": 100,
+        "temperature": 27
+    },
+    "0x60a423fffe0233bc": {
+        "color_mode": "xy",
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "OFF",
+        "color": {
+            "x": 0.4031,
+            "y": 0.2634
+        },
+        "color_temp": 521
+    },
+    "0x588e81fffe5093f9": {
+        "battery": 74,
+        "occupancy": true,
+        "illuminance_above_threshold": false,
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false
+    }
+}

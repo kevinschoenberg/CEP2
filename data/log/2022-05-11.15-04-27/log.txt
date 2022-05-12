@@ -1,0 +1,56 @@
+info  2022-05-11 15:04:31: Logging to console and directory: '/opt/zigbee2mqtt/data/log/2022-05-11.15-04-27' filename: log.txt
+info  2022-05-11 15:04:31: Starting Zigbee2MQTT version 1.23.0 (commit #6ea61bae)
+info  2022-05-11 15:04:31: Starting zigbee-herdsman (0.14.10)
+info  2022-05-11 15:04:33: zigbee-herdsman started (resumed)
+info  2022-05-11 15:04:33: Coordinator firmware version: '{"meta":{"maintrel":3,"majorrel":2,"minorrel":6,"product":0,"revision":20190608,"transportrev":2},"type":"zStack12"}'
+info  2022-05-11 15:04:33: Currently 3 devices are joined:
+info  2022-05-11 15:04:33: Kitchen_Sensor (0x00158d00057b287c): RTCGQ11LM - Xiaomi Aqara human body movement and illuminance sensor (EndDevice)
+info  2022-05-11 15:04:33: Extra_Plug (0x680ae2fffe723dd6): SP 220 - Innr Smart plug (Router)
+info  2022-05-11 15:04:33: Kitchen_Plug (0xccccccfffeeab163): 07048L - Immax NEO SMART plug (Router)
+warn  2022-05-11 15:04:33: `permit_join` set to  `true` in configuration.yaml.
+warn  2022-05-11 15:04:33: Allowing new devices to join.
+warn  2022-05-11 15:04:33: Set `permit_join` to `false` once you joined all devices.
+info  2022-05-11 15:04:33: Zigbee: allowing new devices to join.
+info  2022-05-11 15:04:33: Connecting to MQTT server at mqtt://localhost
+info  2022-05-11 15:04:33: Connected to MQTT server
+info  2022-05-11 15:04:33: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload 'online'
+info  2022-05-11 15:04:34: Started frontend on port 0.0.0.0:8080
+info  2022-05-11 15:04:34: MQTT publish: topic 'zigbee2mqtt/bridge/config', payload '{"commit":"6ea61bae","coordinator":{"meta":{"maintrel":3,"majorrel":2,"minorrel":6,"product":0,"revision":20190608,"transportrev":2},"type":"zStack12"},"log_level":"info","network":{"channel":11,"extendedPanID":"0x00124b0014d9d10b","panID":6754},"permit_join":true,"version":"1.23.0"}'
+info  2022-05-11 15:04:34: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":213,"illuminance_lux":213,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:04:34: MQTT publish: topic 'zigbee2mqtt/Extra_Plug', payload '{"state":"ON"}'
+info  2022-05-11 15:04:34: MQTT publish: topic 'zigbee2mqtt/Kitchen_Plug', payload '{"power":7,"state":"ON"}'
+info  2022-05-11 15:04:36: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":197,"illuminance_lux":197,"linkquality":34,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:04:36: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":197,"illuminance_lux":197,"linkquality":36,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:04:53: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":220,"illuminance_lux":220,"linkquality":5,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:04:53: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":220,"illuminance_lux":220,"linkquality":5,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:04:58: Device '0x60a423fffe0233bc' joined
+info  2022-05-11 15:04:58: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"friendly_name":"0x60a423fffe0233bc","ieee_address":"0x60a423fffe0233bc"},"type":"device_joined"}'
+info  2022-05-11 15:04:58: MQTT publish: topic 'zigbee2mqtt/bridge/log', payload '{"message":{"friendly_name":"0x60a423fffe0233bc"},"type":"device_connected"}'
+info  2022-05-11 15:04:58: Starting interview of '0x60a423fffe0233bc'
+info  2022-05-11 15:04:58: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"friendly_name":"0x60a423fffe0233bc","ieee_address":"0x60a423fffe0233bc","status":"started"},"type":"device_interview"}'
+info  2022-05-11 15:04:58: MQTT publish: topic 'zigbee2mqtt/bridge/log', payload '{"message":"interview_started","meta":{"friendly_name":"0x60a423fffe0233bc"},"type":"pairing"}'
+info  2022-05-11 15:04:58: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"friendly_name":"0x60a423fffe0233bc","ieee_address":"0x60a423fffe0233bc"},"type":"device_announce"}'
+info  2022-05-11 15:04:58: MQTT publish: topic 'zigbee2mqtt/bridge/log', payload '{"message":"announce","meta":{"friendly_name":"0x60a423fffe0233bc"},"type":"device_announced"}'
+info  2022-05-11 15:05:00: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":207,"illuminance_lux":207,"linkquality":31,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:00: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":207,"illuminance_lux":207,"linkquality":31,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:03: Successfully interviewed '0x60a423fffe0233bc', device has successfully been paired
+info  2022-05-11 15:05:03: Device '0x60a423fffe0233bc' is supported, identified as: Gledopto Zigbee USB Mini LED Controller RGB+CCT (pro) (GL-MC-001P)
+info  2022-05-11 15:05:03: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"definition":{"description":"Zigbee USB Mini LED Controller RGB+CCT (pro)","exposes":[{"features":[{"access":7,"description":"On/off state of this light","name":"state","property":"state","type":"binary","value_off":"OFF","value_on":"ON","value_toggle":"TOGGLE"},{"access":7,"description":"Brightness of this light","name":"brightness","property":"brightness","type":"numeric","value_max":254,"value_min":0},{"access":7,"description":"Color temperature of this light","name":"color_temp","presets":[{"description":"Coolest temperature supported","name":"coolest","value":150},{"description":"Cool temperature (250 mireds / 4000 Kelvin)","name":"cool","value":250},{"description":"Neutral temperature (370 mireds / 2700 Kelvin)","name":"neutral","value":370},{"description":"Warm temperature (454 mireds / 2200 Kelvin)","name":"warm","value":454},{"description":"Warmest temperature supported","name":"warmest","value":500}],"property":"color_temp","type":"numeric","unit":"mired","value_max":500,"value_min":150},{"access":7,"description":"Color temperature after cold power on of this light","name":"color_temp_startup","presets":[{"description":"Coolest temperature supported","name":"coolest","value":150},{"description":"Cool temperature (250 mireds / 4000 Kelvin)","name":"cool","value":250},{"description":"Neutral temperature (370 mireds / 2700 Kelvin)","name":"neutral","value":370},{"description":"Warm temperature (454 mireds / 2200 Kelvin)","name":"warm","value":454},{"description":"Warmest temperature supported","name":"warmest","value":500},{"description":"Restore previous color_temp on cold power on","name":"previous","value":65535}],"property":"color_temp_startup","type":"numeric","unit":"mired","value_max":500,"value_min":150},{"description":"Color of this light in the CIE 1931 color space (x/y)","features":[{"access":7,"name":"x","property":"x","type":"numeric"},{"access":7,"name":"y","property":"y","type":"numeric"}],"name":"color_xy","property":"color","type":"composite"},{"description":"Color of this light expressed as hue/saturation","features":[{"access":7,"name":"hue","property":"hue","type":"numeric"},{"access":7,"name":"saturation","property":"saturation","type":"numeric"}],"name":"color_hs","property":"color","type":"composite"}],"type":"light"},{"access":2,"description":"Triggers an effect on the light (e.g. make light blink for a few seconds)","name":"effect","property":"effect","type":"enum","values":["blink","breathe","okay","channel_change","finish_effect","stop_effect"]},{"access":1,"description":"Link quality (signal strength)","name":"linkquality","property":"linkquality","type":"numeric","unit":"lqi","value_max":255,"value_min":0}],"model":"GL-MC-001P","options":[{"access":2,"description":"Controls the transition time (in seconds) of on/off, brightness, color temperature (if applicable) and color (if applicable) changes. Defaults to `0` (no transition).","name":"transition","property":"transition","type":"numeric","value_min":0},{"access":2,"description":"When enabled colors will be synced, e.g. if the light supports both color x/y and color temperature a conversion from color x/y to color temperature will be done when setting the x/y color (default true).","name":"color_sync","property":"color_sync","type":"binary","value_off":false,"value_on":true}],"supports_ota":true,"vendor":"Gledopto"},"friendly_name":"0x60a423fffe0233bc","ieee_address":"0x60a423fffe0233bc","status":"successful","supported":true},"type":"device_interview"}'
+info  2022-05-11 15:05:03: Configuring '0x60a423fffe0233bc'
+info  2022-05-11 15:05:03: MQTT publish: topic 'zigbee2mqtt/bridge/log', payload '{"message":"interview_successful","meta":{"description":"Zigbee USB Mini LED Controller RGB+CCT (pro)","friendly_name":"0x60a423fffe0233bc","model":"GL-MC-001P","supported":true,"vendor":"Gledopto"},"type":"pairing"}'
+info  2022-05-11 15:05:03: MQTT publish: topic 'zigbee2mqtt/0x60a423fffe0233bc', payload '{"color_mode":"xy","linkquality":34}'
+info  2022-05-11 15:05:04: MQTT publish: topic 'zigbee2mqtt/0x60a423fffe0233bc', payload '{"color_mode":"xy","linkquality":39}'
+info  2022-05-11 15:05:04: Successfully configured '0x60a423fffe0233bc'
+info  2022-05-11 15:05:09: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":218,"illuminance_lux":218,"linkquality":2,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:09: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":218,"illuminance_lux":218,"linkquality":5,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:18: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":226,"illuminance_lux":226,"linkquality":23,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:18: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":226,"illuminance_lux":226,"linkquality":23,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:25: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":201,"illuminance_lux":201,"linkquality":21,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:25: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":201,"illuminance_lux":201,"linkquality":21,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:30: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":211,"illuminance_lux":211,"linkquality":28,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:30: MQTT publish: topic 'zigbee2mqtt/Kitchen_Sensor', payload '{"battery":100,"illuminance":211,"illuminance_lux":211,"linkquality":28,"occupancy":true,"temperature":29,"voltage":3205}'
+info  2022-05-11 15:05:32: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload 'offline'
+info  2022-05-11 15:05:32: Disconnecting from MQTT server
+info  2022-05-11 15:05:32: Stopping zigbee-herdsman...
+info  2022-05-11 15:05:32: Stopped zigbee-herdsman
+info  2022-05-11 15:05:32: Stopped Zigbee2MQTT
