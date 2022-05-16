@@ -108,20 +108,20 @@ class Cep2Controller:
             self.temp = 0
             
         self.time_sm = time.time() - self.timer
-        self.global_timer = self.time_sm - 20
-        if round(self.global_timer) % 5 == 0 and self.global_timer >=0:
+        self.global_timer = self.time_sm - 15
+        if round(self.global_timer) % 3 == 0 and self.global_timer >=0:
             print("User has left the kitchen for " + str(round(self.global_timer)) + " seconds.")
         
-        if self.time_sm > 20:
+        if self.time_sm > 15:
             if  self.global_timer < 1:
                 self.SendEvent("User Has Left The Kitchen")
-            if self.global_timer > 300 and self.Kitchen_Light_State != 1:
+            if self.global_timer > 40 and self.Kitchen_Light_State != 1:
                 self.LightOn(0)
             
-        elif self.global_timer < 300 and self.Kitchen_Light_State != 0:
+        if self.global_timer < 40 and self.Kitchen_Light_State != 0:
             self.TurnOffAllLights()
             
-        elif self.global_timer > 1200:
+        if self.global_timer > 80:
             self.StoveOff()
             self.TurnOffAllLights()
             self.LightOn(0)
@@ -140,12 +140,12 @@ class Cep2Controller:
             event_kitchen_occupancy.IdChain = self.idchain
             data = event_kitchen_occupancy.to_json()              
             conn.request('POST', '/a.php', data)
-            r1 = conn.getresponse()
-            """
-            print(r1.status, r1.reason)
-            while chunk := r1.read(200):
-                print(repr(chunk))
-            """
+           # r1 = conn.getresponse()
+            
+           # print(r1.status, r1.reason)
+           # while chunk := r1.read(200):
+           #     print(repr(chunk))
+            
     def __zigbee2mqtt_event_received(self, message: Cep2Zigbee2mqttMessage) -> None:
         """ Process an event received from zigbee2mqtt. This function given as callback to
         Cep2Zigbee2mqttClient, which is then called when a message from zigbee2mqtt is received.
@@ -184,6 +184,7 @@ class Cep2Controller:
             try:
                 #This checks if the event recieved includes the variable power, as in is the event from the plug.
                 power=message.event["power"]
+                state = message.event["state"]
                 #If the device is not the kitchen plug then ignore the event. We only use that one plug.
                 if device_id != "Kitchen_Plug":
                     pass
@@ -191,7 +192,7 @@ class Cep2Controller:
                 pass
             else:
                 #If the plug is powering something as in the stove is on, check if it was off previously, if it was do the following.
-                if power>0:
+                if power>0 and state == "ON":
                     if self.stove_state == False :
                         self.stove_state = True
                         self.TimerStart()
@@ -201,7 +202,6 @@ class Cep2Controller:
                     if self.stove_state == True:
                         self.SendEvent("Stove Turned Off")
                     self.stove_state = False 
-                    self.TurnOffAllLights()
             try:
                 # Check if the event includes the variables Occupancy, as in is it from a sensor.
                 occupancy = message.event["occupancy"]
@@ -212,13 +212,13 @@ class Cep2Controller:
                 if occupancy:
                     #If it is in the kitchen
                     if device_id == "Kitchen_Sensor":
-                        if self.time_sm > 20 and self.temp == 0:
+                        if self.time_sm > 15 and self.temp == 0:
                             self.temp = 1
                             self.SendEvent("User Returned To The Kitchen")
                         self.TimerStart()
                         self.UserRoomState = 0
                     elif device_id != "Kitchen_Sensor": # If not in the kitchen
-                        if self.global_timer > 300:
+                        if self.global_timer > 40:
                             i = 1
                             while i <= self.Number_Of_Rooms: # Check which room the movement occured in
                                 if "Sensor_Room_"+str(i) == device_id and self.UserRoomState == 0:
