@@ -96,7 +96,7 @@ class Cep2Controller:
     def StoveOff(self) -> None:
         self.stove_state = False
         self.__z2m_client.change_state("Kitchen_Plug", "OFF")
-            
+        self.SendEvent("Stove Was Turned Off By Controller")    
     
     
     def logic(self) -> None:
@@ -115,25 +115,25 @@ class Cep2Controller:
         if self.time_sm > 15:
             if  self.global_timer < 1:
                 self.SendEvent("User Has Left The Kitchen")
-            if self.global_timer > 40 and self.Kitchen_Light_State != 1:
+            if self.global_timer > 20 and self.Kitchen_Light_State != 1:
                 self.LightOn(0)
             
-        if self.global_timer < 40 and self.Kitchen_Light_State != 0:
+        if self.global_timer < 20 and self.Kitchen_Light_State != 0:
             self.TurnOffAllLights()
             
         if self.global_timer > 80:
-            self.StoveOff()
             self.TurnOffAllLights()
             self.LightOn(0)
             self.__z2m_client.change_color("Kitchen_Light",{"r":2,"g":0,"b":0}) # Make the light red to signify that the user left the stove on for more than 20 minutes.
             self.SendEvent("User Has Not Returned After 20 Minutes")
+            self.StoveOff()
             
         return
         
     def SendEvent(self, event) -> None:
             print("Event("+event+") was sent to the database.")
             
-            conn = http.client.HTTPConnection('85.27.189.208')
+            conn = http.client.HTTPConnection('kitchenguard.ddns.net')
             event_kitchen_occupancy = heucod.HeucodEvent()
             event_kitchen_occupancy.Timestamp = time.time()+7200
             event_kitchen_occupancy.Event = event
@@ -200,7 +200,9 @@ class Cep2Controller:
                         self.SendEvent("Stove Turned On")
                 else: # Otherwise if the stove is off, check if it previously was on, if it was do the following.
                     if self.stove_state == True:
-                        self.SendEvent("Stove Turned Off")
+                        self.SendEvent("Stove Was Manually Turned Off")
+                        if self.global_timer < 80:
+                            self.LightOff(0)
                     self.stove_state = False 
             try:
                 # Check if the event includes the variables Occupancy, as in is it from a sensor.
@@ -209,7 +211,7 @@ class Cep2Controller:
                 pass
             else:
                 # If there is movement
-                if occupancy:
+                if occupancy and self.stove_state:
                     #If it is in the kitchen
                     if device_id == "Kitchen_Sensor":
                         if self.time_sm > 15 and self.temp == 0:
@@ -217,8 +219,10 @@ class Cep2Controller:
                             self.SendEvent("User Returned To The Kitchen")
                         self.TimerStart()
                         self.UserRoomState = 0
+                        #self.__z2m_client.change_color("Kitchen_Light",{"r":2,"g":5,"b":2})
+
                     elif device_id != "Kitchen_Sensor": # If not in the kitchen
-                        if self.global_timer > 40:
+                        if self.global_timer > 20:
                             i = 1
                             while i <= self.Number_Of_Rooms: # Check which room the movement occured in
                                 if "Sensor_Room_"+str(i) == device_id and self.UserRoomState == 0:
