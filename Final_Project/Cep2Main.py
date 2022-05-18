@@ -17,11 +17,11 @@ if __name__ == "__main__":
                        #Cep2ZigbeeDevice("Sensor_Room_5", "pir")
                        
                        # The following LEDs would be connected, however we did not manage to add any additional lights
-                       #Cep2ZigbeeDevice("Light_Room_1", "pir")
-                       #Cep2ZigbeeDevice("Light_Room_2", "pir")
-                       #Cep2ZigbeeDevice("Light_Room_3", "pir")
-                       #Cep2ZigbeeDevice("Light_Room_4", "pir")
-                       #Cep2ZigbeeDevice("Light_Room_5", "pir")
+                       #Cep2ZigbeeDevice("Light_Room_1", "led")
+                       #Cep2ZigbeeDevice("Light_Room_2", "led")
+                       #Cep2ZigbeeDevice("Light_Room_3", "led")
+                       #Cep2ZigbeeDevice("Light_Room_4", "led")
+                       #Cep2ZigbeeDevice("Light_Room_5", "led")
                       ])
 
     # Create a controller and give it the data model that was instantiated.
