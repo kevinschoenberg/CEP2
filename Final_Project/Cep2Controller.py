@@ -211,18 +211,18 @@ class Cep2Controller:
             else:
                 # If there is movement
                 if occupancy and self.stove_state:
-                    #If it is in the kitchen
+                    #If it is from the kitchen
                     if device_id == "Kitchen_Sensor":
                         if self.time_sm > 20 and self.temp == 0:
-                            self.temp = 1
+                            self.temp = 1 # Used to handle HTTP delay
                             self.SendEvent("User Returned To The Kitchen")
-                        self.TimerStart()
-                        self.UserRoomState = 0
-                        #self.__z2m_client.change_color("Kitchen_Light",{"r":2,"g":5,"b":2})
+                        self.TimerStart() # Resets the timer
+                        self.UserRoomState = 0 # Used to indicate that the user is in the kitchen
+                        #self.__z2m_client.change_color("Kitchen_Light",{"r":2,"g":5,"b":2}) # Used for testing purposes
 
-                    elif device_id != "Kitchen_Sensor": # If not in the kitchen
-                        if self.global_timer > 300:
-                            i = 1
+                    elif device_id != "Kitchen_Sensor": # If not from the kitchen
+                        if self.global_timer > 300: # and 5 minutes have passed
+                            i = 1 # used to keep track of the rooms
                             while i <= self.Number_Of_Rooms: # Check which room the movement occured in
                                 if "Sensor_Room_"+str(i) == device_id and self.UserRoomState == 0:
                                     #self.LightOn(i)
