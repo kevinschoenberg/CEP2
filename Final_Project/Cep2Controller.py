@@ -12,7 +12,7 @@ class Cep2Controller:
     MQTT_BROKER_HOST = "localhost"
     MQTT_BROKER_PORT = 1883
     
-    timer = time.time()
+    timer = time.time() # This is the variable used to calculate time_sm and therefore global_timer.
     Kitchen_Light_State = 1 # Used to keep track of whether the kitchen light is on.
     stove_state = False # Used to indicate if the stove is on or off.
     time_sm = 0 # small timer, to keep track of if movement has been detected in the kitchen for the last 20 seconds.
