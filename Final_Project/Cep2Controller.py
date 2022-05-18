@@ -65,7 +65,7 @@ class Cep2Controller:
         i = 0 # Variable used to shift through all rooms.
         new_state = "OFF"
         while i <= self.Number_Of_Rooms: # Shift through the number of rooms in the house
-            self.__z2m_client.change_state("Light_Room_"+str(i), new_state)
+            #self.__z2m_client.change_state("Light_Room_"+str(i), new_state) # This should work however is untested
             i +=1
         self.LightOff(0)
         
@@ -88,7 +88,7 @@ class Cep2Controller:
             self.Kitchen_Light_State = 0
             self.__z2m_client.change_state("Kitchen_Light", new_state)
         else: # Otherwise turn off the led in the room indicated by the room number
-            self.__z2m_client.change_state("Light_Room_"+str(room_number), new_state)
+            #self.__z2m_client.change_state("Light_Room_"+str(room_number), new_state) # This should work however is untested
     
     def StoveOff(self) -> None:
         self.stove_state = False # set the stove state to False, to indicate that the stove is off
