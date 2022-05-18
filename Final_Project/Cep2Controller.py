@@ -14,13 +14,13 @@ class Cep2Controller:
     
     timer = time.time()
     Kitchen_Light_State = 1 # Used to keep track of whether the kitchen light is on.
-    stove_state = False
-    time_sm = 0 # small timer, to keep track of if the user has been in the kitchen for 20 seconds.
+    stove_state = False # Used to indicate if the stove is on or off.
+    time_sm = 0 # small timer, to keep track of if movement has been detected in the kitchen for the last 20 seconds.
     global_timer = 0 # Variable to keep track of how long no movement has been detected in the kitchen while the stove is on.
     idchain = 0 # Used to seperate the data in the database.
-    Number_Of_Rooms = 1 # The number of rooms excluding the kitchen that have sensors.
-    UserRoomState = 0
-    temp = 0
+    Number_Of_Rooms = 1 # The number of rooms excluding the kitchen that have been configured.
+    UserRoomState = 0 # Used to indicate if the user is in another room.
+    temp = 0 # Used as a failsafe to handle delays caused by using HTTP to send events to the web API.
     
     
 
