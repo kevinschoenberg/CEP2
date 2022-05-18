@@ -112,18 +112,18 @@ class Cep2Controller:
             print("User has left the kitchen for " + str(round(self.global_timer)) + " seconds.")
         """
         
-        if self.time_sm > 20:
-            if  self.global_timer < 1:
+        if self.time_sm >= 20:
+            if  self.global_timer <= 1:
                 self.SendEvent("User Has Left The Kitchen")
         """
         This part is for testing purposes
             if self.global_timer > 300 and self.Kitchen_Light_State != 1:
                 self.LightOn(0)
         """    
-        if self.global_timer < 300 and self.Kitchen_Light_State != 0: # This would be changed once we added more lights to the system
+        if self.global_timer <= 300 and self.Kitchen_Light_State != 0: # This would be changed once we added more lights to the system
             self.TurnOffAllLights()
             
-        if self.global_timer > 1200: # If 20 minutes pass with no event recieved from the kitchen sensor with occupancy == true do the following
+        if self.global_timer >= 1200: # If 20 minutes pass with no event recieved from the kitchen sensor with occupancy == true do the following
             self.TurnOffAllLights() # Turn off all alerting lights.
             self.LightOn(0) # Turn on the kitchen LED light.
             self.__z2m_client.change_color("Kitchen_Light",{"r":2,"g":0,"b":0}) # Make the light red to signify that the user left the stove on for more than 20 minutes.
