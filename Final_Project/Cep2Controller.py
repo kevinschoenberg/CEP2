@@ -11,9 +11,9 @@ class Cep2Controller:
     HTTP_HOST = "http://192.168.86.134:8085" # This is not used
     MQTT_BROKER_HOST = "localhost"
     MQTT_BROKER_PORT = 1883
+    
     timer = time.time()
     Kitchen_Light_State = 1 # Used to keep track of whether the kitchen light is on.
-
     stove_state = False
     time_sm = 0 # small timer, to keep track of if the user has been in the kitchen for 20 seconds.
     global_timer = 0 # Variable to keep track of how long no movement has been detected in the kitchen while the stove is on.
