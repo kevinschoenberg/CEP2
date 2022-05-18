@@ -119,10 +119,10 @@ class Cep2Controller:
         This part is for testing purposes
             if self.global_timer > 300 and self.Kitchen_Light_State != 1:
                 self.LightOn(0)
-            
-        if self.global_timer < 300 and self.Kitchen_Light_State != 0:
-            self.TurnOffAllLights()
         """    
+        if self.global_timer < 300 and self.Kitchen_Light_State != 0: # This would be changed once we added more lights to the system
+            self.TurnOffAllLights()
+            
         if self.global_timer > 1200: # If 20 minutes pass with no event recieved from the kitchen sensor with occupancy == true do the following
             self.TurnOffAllLights() # Turn off all alerting lights.
             self.LightOn(0) # Turn on the kitchen LED light.
