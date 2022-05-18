@@ -8,7 +8,7 @@ import heucod
 import json
 
 class Cep2Controller:
-    HTTP_HOST = "http://192.168.86.134:8085"
+    HTTP_HOST = "http://192.168.86.134:8085" # This is not used
     MQTT_BROKER_HOST = "localhost"
     MQTT_BROKER_PORT = 1883
     timer = time.time()
