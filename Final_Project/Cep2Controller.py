@@ -64,12 +64,12 @@ class Cep2Controller:
     def TurnOffAllLights(self) -> None:
         i = 0 # Variable used to shift through all rooms.
         new_state = "OFF"
-        while i <= self.Number_Of_Rooms:
-            #self.__z2m_client.change_state("Room_"+str(i), new_state)
+        while i <= self.Number_Of_Rooms: # Shift through the number of rooms in the house
+            self.__z2m_client.change_state("Light_Room_"+str(i), new_state)
             i +=1
         self.LightOff(0)
         
-    def StoveOn(self) -> bool:
+    def StoveOn(self) -> bool: # Simply returns a boolean indicating if the stove is on or off
         return self.stove_state
 
     def LightOn(self, room_number) -> None:
@@ -77,63 +77,65 @@ class Cep2Controller:
         if room_number == 0:
             self.Kitchen_Light_State = 1
             self.__z2m_client.change_state("Kitchen_Light", new_state)
-            if self.UserRoomState == 0:
-                self.__z2m_client.change_color("Kitchen_Light",{"r":2,"g":5,"b":2})
+            #if self.UserRoomState == 0: # Used for testing purposes
+            #    self.__z2m_client.change_color("Kitchen_Light",{"r":2,"g":5,"b":2})
         else:
-            room = "Room_"+str(room_number)+"_State"
-            self.room = 1
-            #self.__z2m_client.change_state("Room_"+str(room_number), new_state)
+            self.__z2m_client.change_state("Light_Room_"+str(room_number), new_state)
         
     def LightOff(self, room_number) -> None:
         new_state = "OFF"
-        if room_number == 0:
+        if room_number == 0: # If the room number is 0 indicating it is the kitchen, turn off the kitchen led
             self.Kitchen_Light_State = 0
             self.__z2m_client.change_state("Kitchen_Light", new_state)
-        else:
-            room = "Room_"+str(room_number)+"_State"
-            self.room = 0
-            #self.__z2m_client.change_state("Room_"+str(room_number), new_state)
+        else: # Otherwise turn off the led in the room indicated by the room number
+            self.__z2m_client.change_state("Light_Room_"+str(room_number), new_state)
+    
     def StoveOff(self) -> None:
-        self.stove_state = False
-        self.__z2m_client.change_state("Kitchen_Plug", "OFF")
-        self.SendEvent("Stove Was Turned Off By Controller")    
+        self.stove_state = False # set the stove state to False, to indicate that the stove is off
+        self.__z2m_client.change_state("Kitchen_Plug", "OFF") # Turn off the kitchen plug
+        self.SendEvent("Stove Was Turned Off By Controller") # Send an event indicating this to the web API 
     
     
     def logic(self) -> None:
-        if self.stove_state == False:
+        if self.stove_state == False: # If the stove is off return
             return
         
-        if self.temp != 0:
+        if self.temp != 0: # This is a failsafe used to handle the delay that sometimes comes with sending an event using HTTP
             self.TimerStart()
             self.temp = 0
             
-        self.time_sm = time.time() - self.timer
-        self.global_timer = self.time_sm - 20
-        #if round(self.global_timer) % 5 == 0 and self.global_timer >=0:
-        #    print("User has left the kitchen for " + str(round(self.global_timer)) + " seconds.")
+        self.time_sm = time.time() - self.timer # The first timer
+        self.global_timer = self.time_sm - 20 # The global timer
+        """
+        Used for testing purposes
+        if round(self.global_timer) % 5 == 0 and self.global_timer >=0:
+            print("User has left the kitchen for " + str(round(self.global_timer)) + " seconds.")
+        """
         
         if self.time_sm > 20:
             if  self.global_timer < 1:
                 self.SendEvent("User Has Left The Kitchen")
-            #if self.global_timer > 300 and self.Kitchen_Light_State != 1: # This part is for testing purposes
-            #    self.LightOn(0)
+        """
+        This part is for testing purposes
+            if self.global_timer > 300 and self.Kitchen_Light_State != 1:
+                self.LightOn(0)
             
-        #if self.global_timer < 300 and self.Kitchen_Light_State != 0: # This is also for testing purposes
-        #    self.TurnOffAllLights()
-            
+        if self.global_timer < 300 and self.Kitchen_Light_State != 0:
+            self.TurnOffAllLights()
+        """    
         if self.global_timer > 1200: # If 20 minutes pass with no event recieved from the kitchen sensor with occupancy == true do the following
             self.TurnOffAllLights() # Turn off all alerting lights.
             self.LightOn(0) # Turn on the kitchen LED light.
             self.__z2m_client.change_color("Kitchen_Light",{"r":2,"g":0,"b":0}) # Make the light red to signify that the user left the stove on for more than 20 minutes.
             self.SendEvent("User Has Not Returned After 20 Minutes") # Send an event to the web API
             self.StoveOff() # Turn off the stove
-            
         return
         
     def SendEvent(self, event) -> None:
-            # This is for testing purposes
-            #print("Event("+event+") was sent to the database.")
-            
+            """
+            This is for testing purposes
+            print("Event("+event+") was sent to the database.")
+            """
             # This is the code used to send a json package to the web API to store in the database.
             conn = http.client.HTTPConnection('kitchenguard.ddns.net')
             event_kitchen_occupancy = heucod.HeucodEvent()
@@ -142,15 +144,16 @@ class Cep2Controller:
             event_kitchen_occupancy.IdChain = self.idchain
             data = event_kitchen_occupancy.to_json()              
             conn.request('POST', '/a.php', data)
-           
-           # This is for testing purposes
-           # r1 = conn.getresponse() 
-           # print(r1.status, r1.reason)
-           # while chunk := r1.read(200):
-           #     print(repr(chunk))
-            
+           """
+            This is for testing purposes
+            r1 = conn.getresponse() 
+            print(r1.status, r1.reason)
+            while chunk := r1.read(200):
+                print(repr(chunk))
+           """
     def __zigbee2mqtt_event_received(self, message: Cep2Zigbee2mqttMessage) -> None:
-        """ Process an event received from zigbee2mqtt. This function given as callback to
+        """ 
+        Process an event received from zigbee2mqtt. This function given as callback to
         Cep2Zigbee2mqttClient, which is then called when a message from zigbee2mqtt is received.
 
         Args:
@@ -160,33 +163,26 @@ class Cep2Controller:
         if not message:
             return
         # This prints what event is recieved in the controllers terminal.
-        #print(
-        #    f"zigbee2mqtt event received on topic {message.topic}: {message.data}: {message.event}")
+        #print(f"zigbee2mqtt event received on topic {message.topic}: {message.data}: {message.event}")
         
         # If the message is not a device event, then don't do anything.
         if message.type_ != Cep2Zigbee2mqttMessageType.DEVICE_EVENT:
             return
         
-        # Parse the topic to retreive the device ID. If the topic only has one level, don't do
-        # anything.
+        # Parse the topic to retreive the device ID. If the topic only has one level, don't do anything.
         tokens = message.topic.split("/")
         if len(tokens) <= 1:
             return
         
         # Retrieve the device ID from the topic.
         device_id = tokens[1]
-        
-        
-        # If the device ID is known, then process the device event and send a message to the remote
-        # web server.
+
         device = self.__devices_model.find(device_id)
-        
-        #print(f"This is the device after find function: {device_id}")
         
         if device:
             try:
                 #This checks if the event recieved includes the variable power, as in is the event from the plug.
-                power=message.event["power"]
+                power = message.event["power"]
                 state = message.event["state"]
                 #If the device is not the kitchen plug then ignore the event. We only use that one plug.
                 if device_id != "Kitchen_Plug":
