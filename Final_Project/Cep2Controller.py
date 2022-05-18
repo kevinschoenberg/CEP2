@@ -80,7 +80,8 @@ class Cep2Controller:
             #if self.UserRoomState == 0: # Used for testing purposes
             #    self.__z2m_client.change_color("Kitchen_Light",{"r":2,"g":5,"b":2})
         else:
-            self.__z2m_client.change_state("Light_Room_"+str(room_number), new_state)
+            #This line can be used if other light devices are configured. However it is untested.
+            #self.__z2m_client.change_state("Light_Room_"+str(room_number), new_state)
         
     def LightOff(self, room_number) -> None:
         new_state = "OFF"
