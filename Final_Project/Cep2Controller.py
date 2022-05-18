@@ -68,7 +68,8 @@ class Cep2Controller:
             #self.__z2m_client.change_state("Light_Room_"+str(i), new_state) # This should work however is untested
             i +=1
         self.LightOff(0)
-        
+    
+    #This method is not used
     def StoveOn(self) -> bool: # Simply returns a boolean indicating if the stove is on or off
         return self.stove_state
 
