@@ -115,24 +115,26 @@ class Cep2Controller:
         if self.time_sm > 20:
             if  self.global_timer < 1:
                 self.SendEvent("User Has Left The Kitchen")
-            if self.global_timer > 300 and self.Kitchen_Light_State != 1:
-                self.LightOn(0)
+            #if self.global_timer > 300 and self.Kitchen_Light_State != 1: # This part is for testing purposes
+            #    self.LightOn(0)
             
-        if self.global_timer < 300 and self.Kitchen_Light_State != 0:
-            self.TurnOffAllLights()
+        #if self.global_timer < 300 and self.Kitchen_Light_State != 0: # This is also for testing purposes
+        #    self.TurnOffAllLights()
             
-        if self.global_timer > 1200:
-            self.TurnOffAllLights()
-            self.LightOn(0)
+        if self.global_timer > 1200: # If 20 minutes pass with no event recieved from the kitchen sensor with occupancy == true do the following
+            self.TurnOffAllLights() # Turn off all alerting lights.
+            self.LightOn(0) # Turn on the kitchen LED light.
             self.__z2m_client.change_color("Kitchen_Light",{"r":2,"g":0,"b":0}) # Make the light red to signify that the user left the stove on for more than 20 minutes.
-            self.SendEvent("User Has Not Returned After 20 Minutes")
-            self.StoveOff()
+            self.SendEvent("User Has Not Returned After 20 Minutes") # Send an event to the web API
+            self.StoveOff() # Turn off the stove
             
         return
         
     def SendEvent(self, event) -> None:
-            print("Event("+event+") was sent to the database.")
+            # This is for testing purposes
+            #print("Event("+event+") was sent to the database.")
             
+            # This is the code used to send a json package to the web API to store in the database.
             conn = http.client.HTTPConnection('kitchenguard.ddns.net')
             event_kitchen_occupancy = heucod.HeucodEvent()
             event_kitchen_occupancy.Timestamp = time.time()+7200
@@ -140,8 +142,9 @@ class Cep2Controller:
             event_kitchen_occupancy.IdChain = self.idchain
             data = event_kitchen_occupancy.to_json()              
             conn.request('POST', '/a.php', data)
-           # r1 = conn.getresponse()
-            
+           
+           # This is for testing purposes
+           # r1 = conn.getresponse() 
            # print(r1.status, r1.reason)
            # while chunk := r1.read(200):
            #     print(repr(chunk))
@@ -198,14 +201,14 @@ class Cep2Controller:
                         self.TimerStart()
                         self.idchain += 1
                         self.SendEvent("Stove Turned On")
-                else: # Otherwise if the stove is off, check if it previously was on, if it was do the following.
-                    if self.stove_state == True:
+                else: # Otherwise if the stove is off
+                    if self.stove_state == True: #check if it previously was on, if it was do the following.
                         self.SendEvent("Stove Was Manually Turned Off")
                         if self.global_timer < 1200:
                             self.LightOff(0)
                     self.stove_state = False 
             try:
-                # Check if the event includes the variables Occupancy, as in is it from a sensor.
+                # Check if the event includes the variable occupancy, as in is it from a sensor.
                 occupancy = message.event["occupancy"]
             except KeyError:
                 pass
