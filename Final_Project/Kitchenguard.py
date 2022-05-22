@@ -226,13 +226,13 @@ class Cep2Controller:
                         if self.global_timer > 300: # and 5 minutes have passed
                             i = 1 # used to keep track of the rooms
                             while i <= self.Number_Of_Rooms: # Check which room the movement occured in
-                                if "Sensor_Room_"+str(i) == device_id and self.UserRoomState == 0:
+                                if "Sensor_Room_"+str(i) == device_id and self.UserRoomState != i:
                                     #self.LightOn(i)
                                     #When the user enters another room the kitchen light will change colour. This is because we only have one light.
                                     #self.TurnOffAllLights()
-                                    self.UserRoomState = 1
-                                    self.LightOn(0)
-                                    self.__z2m_client.change_color("Kitchen_Light",{"r":i+2 ,"g":i,"b":i+1})
-                                    self.SendEvent("User is in Room "+str(i))
+                                    self.UserRoomState = i
+                                    self.LightOn(0) # Here we would light up room i, but as we only have 1 led light this has not been implemented
+                                    self.__z2m_client.change_color("Kitchen_Light",{"r":i+2 ,"g":i,"b":i+1}) # We instead change the color depending on i.
+                                    self.SendEvent("User is in Room "+str(i)) # Send an event to the web api.
                                 i+=1
                 
