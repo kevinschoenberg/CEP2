@@ -27,6 +27,7 @@ Test Specification, Acceptence Test, And Review Documents.
 
 
 The Final_project folder contains the code for the Kitchen Guard Application
+
 And the data and mosquitto folder contains configuration files for the Pi. 
 
 
