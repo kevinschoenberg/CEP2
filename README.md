@@ -16,3 +16,16 @@ Martin Michaelsen: 202007433@post.au.dk
 
 ## Video of demo
 https://youtu.be/2kqWTvpPbT0
+
+The Appendixes folder contains the 
+Requiremenet Specification, 
+Architectural Design Specification, 
+Implementation Specification, 
+Test Specification, 
+Acceptence Test,
+And Review Documents.
+
+The Final_project folder contains the code for the Kitchen Guard Application
+And the data and mosquitto folder contains configuration files for the Pi. 
+
+At last the example.local contains the files for the Server Pc.
