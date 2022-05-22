@@ -21,17 +21,9 @@ https://youtu.be/2kqWTvpPbT0
 
 The Appendixes folder contains the
 
-Requiremenet Specification, 
+Requiremenet Specification, Architectural Design Specification, Implementation Specification, 
 
-Architectural Design Specification, 
-
-Implementation Specification, 
-
-Test Specification, 
-
-Acceptence Test,
-
-And Review Documents.
+Test Specification, Acceptence Test, And Review Documents.
 
 
 The Final_project folder contains the code for the Kitchen Guard Application
