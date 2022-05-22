@@ -1,6 +1,6 @@
 # Computer Technology Project 2
 
-# Authors:
+## Authors:
 Anton Matzen: 202008936@post.au.dk
 
 Kevin Schønberg: 202007282@post.au.dk
