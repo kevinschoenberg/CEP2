@@ -1,4 +1,5 @@
-# 
+# Computer Technology Project 2
+Group 2
 
 # Authors:
 Anton Matzen: 202008936@post.au.dk
